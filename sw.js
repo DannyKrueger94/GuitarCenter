@@ -2,6 +2,7 @@
    SW.JS - Service worker: l'app funziona anche offline
    - App (html, css, js, pdf.js): cache con versione, aggiornata quando cambi VERSION
    - Spartiti PDF: cache separata "spartiti-pdf" gestita dall'app, che resta tra un aggiornamento e l'altro
+   - Lettore delle tab (alphaTab, ~2,5 MB): cache sua, riempita la prima volta che apri una tab interattiva
    - Libreria: prima la rete; se non risponde entro pochi secondi si usa la copia salvata,
      così l'app si apre senza attese anche con una connessione pessima
    Funziona sia con i sorgenti in chiaro (libreria.json, *.pdf) sia con la versione
@@ -10,9 +11,10 @@
    Versione pubblicata: VERSION e APP_FILES li scrive da solo strumenti/pubblica.mjs.
    ======================================== */
 
-const VERSION = 'p-4c6f3a2e1b84';
+const VERSION = 'p-ceb3001dd8c8';
 const APP_CACHE = `app-${VERSION}`;
 const PDF_CACHE = 'spartiti-pdf';
+const ALPHATAB_CACHE = 'alphatab-1.7.1';   // uguale a offline.js
 
 const APP_FILES = [
     "./",
@@ -45,7 +47,7 @@ self.addEventListener('message', event => {
 self.addEventListener('activate', event => {
     event.waitUntil((async () => {
         for (const name of await caches.keys()) {
-            if (name !== APP_CACHE && name !== PDF_CACHE) await caches.delete(name);
+            if (name !== APP_CACHE && name !== PDF_CACHE && name !== ALPHATAB_CACHE) await caches.delete(name);
         }
         await self.clients.claim();
     })());
@@ -62,6 +64,18 @@ self.addEventListener('fetch', event => {
     const isLibrary = path.endsWith('/libreria.json') || path.endsWith('/dati/libreria.bin');
     const isSheet = path.toLowerCase().endsWith('.pdf')
         || (path.includes('/dati/') && path.endsWith('.bin') && !isLibrary && !path.endsWith('/dati/app.bin'));
+
+    // Lettore delle tab: dalla sua cache; la prima volta dalla rete, e lo tiene per l'offline
+    if (path.includes('/vendor/alphatab/')) {
+        event.respondWith(caches.open(ALPHATAB_CACHE).then(async cache => {
+            const hit = await cache.match(request, { ignoreSearch: true });
+            if (hit) return hit;
+            const response = await fetch(request);
+            if (response.ok && response.status === 200) cache.put(request, response.clone());
+            return response;
+        }));
+        return;
+    }
 
     // Spartiti: prima la cache degli spartiti, poi la rete
     if (isSheet) {
