@@ -11,7 +11,7 @@
    Versione pubblicata: VERSION e APP_FILES li scrive da solo strumenti/pubblica.mjs.
    ======================================== */
 
-const VERSION = 'p-6e104b2cb452';
+const VERSION = 'p-27c9218307d1';
 const APP_CACHE = `app-${VERSION}`;
 const PDF_CACHE = 'spartiti-pdf';
 const ALPHATAB_CACHE = 'alphatab-1.7.1';   // uguale a offline.js
