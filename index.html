@@ -6,23 +6,25 @@
     <title>GuitarCenter</title>
     <meta name="robots" content="noindex, nofollow">
     <meta name="referrer" content="no-referrer">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#0b0d12">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="GuitarCenter">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" type="image/png" href="icons/icon-192x192.png">
-    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
     <style>
-        html, body { margin: 0; background: #0f172a; color: #e2e8f0; font-family: -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif; }
+        html, body { margin: 0; background: #0b0d12; color: #f1f3f6; font-family: -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif; }
         #blocco { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; }
         #blocco[hidden] { display: none; }
         #blocco form { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 14px; text-align: center; }
-        #blocco h1 { margin: 0 0 4px; font-size: 1.5rem; }
-        #blocco p { margin: 0; color: #94a3b8; }
-        #blocco input { font: 600 1.15rem/1.2 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.06em; text-align: center; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #1e293b; color: inherit; }
-        #blocco button { padding: 14px; border: 0; border-radius: 12px; background: #7c3aed; color: #fff; font-size: 1rem; font-weight: 600; }
+        #blocco img { width: 88px; height: 88px; margin: 0 auto 6px; }
+        #blocco h1 { margin: 0 0 4px; font-size: 1.6rem; letter-spacing: -0.02em; }
+        #blocco p { margin: 0; color: #9aa3b2; }
+        #blocco input { font: 600 1.15rem/1.2 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.06em; text-align: center; padding: 14px; border-radius: 12px; border: 1px solid #2a3140; background: #141821; color: inherit; }
+        #blocco input:focus { outline: none; border-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25); }
+        #blocco button { padding: 14px; border: 0; border-radius: 12px; background: linear-gradient(135deg, #fbbf24, #f97316); color: #1a1206; font-size: 1rem; font-weight: 700; }
         #blocco button:disabled { opacity: 0.6; }
         #errore { color: #f87171; min-height: 1.4em; }
     </style>
@@ -32,6 +34,7 @@
     <!-- Schermata del codice: l'app vera è cifrata e compare solo sui dispositivi attivati -->
     <section id="blocco" hidden>
         <form id="attiva">
+            <img src="icons/icon-192x192.png" alt="">
             <h1>GuitarCenter</h1>
             <p>Inserisci il codice di attivazione di questo dispositivo.</p>
             <input id="codice" placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" required>

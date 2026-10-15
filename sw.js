@@ -11,7 +11,7 @@
    Versione pubblicata: VERSION e APP_FILES li scrive da solo strumenti/pubblica.mjs.
    ======================================== */
 
-const VERSION = 'p-27c9218307d1';
+const VERSION = 'p-a89946998b12';
 const APP_CACHE = `app-${VERSION}`;
 const PDF_CACHE = 'spartiti-pdf';
 const ALPHATAB_CACHE = 'alphatab-1.7.1';   // uguale a offline.js
@@ -26,6 +26,7 @@ const APP_FILES = [
     "./dati/libreria.bin",
     "./vendor/pdfjs/pdf.min.mjs",
     "./vendor/pdfjs/pdf.worker.min.mjs",
+    "./icons/apple-touch-icon.png",
     "./icons/icon-128x128.png",
     "./icons/icon-144x144.png",
     "./icons/icon-152x152.png",
@@ -33,7 +34,9 @@ const APP_FILES = [
     "./icons/icon-384x384.png",
     "./icons/icon-512x512.png",
     "./icons/icon-72x72.png",
-    "./icons/icon-96x96.png"
+    "./icons/icon-96x96.png",
+    "./icons/icon-maskable-192x192.png",
+    "./icons/icon-maskable-512x512.png"
 ];
 
 self.addEventListener('install', event => {
