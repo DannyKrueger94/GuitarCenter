@@ -11,7 +11,7 @@
    Versione pubblicata: VERSION e APP_FILES li scrive da solo strumenti/pubblica.mjs.
    ======================================== */
 
-const VERSION = 'p-a89946998b12';
+const VERSION = 'p-7c6e612f75e0';
 const APP_CACHE = `app-${VERSION}`;
 const PDF_CACHE = 'spartiti-pdf';
 const ALPHATAB_CACHE = 'alphatab-1.7.1';   // uguale a offline.js
@@ -26,6 +26,7 @@ const APP_FILES = [
     "./dati/libreria.bin",
     "./vendor/pdfjs/pdf.min.mjs",
     "./vendor/pdfjs/pdf.worker.min.mjs",
+    "./vendor/font/BricolageGrotesque.woff2",
     "./icons/apple-touch-icon.png",
     "./icons/icon-128x128.png",
     "./icons/icon-144x144.png",

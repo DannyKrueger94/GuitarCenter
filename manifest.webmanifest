@@ -7,8 +7,8 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#0b0d12",
-  "theme_color": "#0b0d12",
+  "background_color": "#15110e",
+  "theme_color": "#15110e",
   "lang": "it-IT",
   "categories": ["music", "education"],
   "icons": [

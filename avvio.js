@@ -90,6 +90,14 @@ async function importaModuli(moduli, principale) {
 
 // ========== SCHERMATA DEL CODICE ==========
 
+// Mentre scrivi (o incolli) il codice si mettono da soli maiuscole e trattini: XXXX-XXXX-…
+els.codice.addEventListener('input', () => {
+    const pulito = els.codice.value.toUpperCase().replace(/[^0-9A-Z]/g, '').slice(0, 24);
+    const formattato = pulito.replace(/(.{4})(?=.)/g, '$1-');
+    if (formattato !== els.codice.value) els.codice.value = formattato;
+    els.errore.textContent = '';
+});
+
 function mostraBlocco(messaggio = '') {
     els.blocco.hidden = false;
     els.errore.textContent = messaggio;
